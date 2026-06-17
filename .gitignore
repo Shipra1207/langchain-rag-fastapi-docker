@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+faiss_index/
+data/
+images/
+.vscode/
+.idea/
+.env
+ingest.py
+query.py
