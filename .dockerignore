@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+*.pyc
+
+.git/
+.gitignore
+
+data/
+faiss_index/
+
+images/
+
+README.md

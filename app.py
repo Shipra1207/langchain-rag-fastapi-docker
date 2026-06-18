@@ -13,7 +13,7 @@ class QueryRequest(BaseModel):
 
 @app.get("/")
 def home():
-    return {"message": "Multimodal RAG API Running"}
+    return {"message": "RAG API Running"}
 
 @app.post("/upload")
 async def upload_pdf(
