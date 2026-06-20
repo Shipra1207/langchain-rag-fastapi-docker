@@ -1,4 +1,4 @@
-# LangChain RAG FastAPI Docker
+# Multimodal RAG with LangChain, Ollama, FastAPI and Docker
 
 A Retrieval-Augmented Generation (RAG) application built using LangChain, FAISS, Ollama, FastAPI, and Docker. The system enables users to upload PDF documents, generate embeddings, perform semantic retrieval, and answer questions using a locally hosted LLM.
 
@@ -11,24 +11,31 @@ A Retrieval-Augmented Generation (RAG) application built using LangChain, FAISS,
 * FastAPI REST endpoints
 * Dynamic document upload and re-indexing
 * Dockerized deployment
+* Image extraction from PDFs using PyMuPDF
+* Visual content understanding using LLaVA
+* Basic multimodal document processing
 
 ---
 
 ## Architecture
 
 PDF Document
-↓
-Text Extraction
+├── Text Extraction (PyPDFLoader)
+├── Image Extraction (PyMuPDF)
+│        ↓
+│      LLaVA
+│        ↓
+│  Image Descriptions
 ↓
 Chunking
 ↓
-Embeddings (Sentence Transformers)
+Embeddings
 ↓
 FAISS Vector Store
 ↓
 Retriever
 ↓
-Ollama (Llama 3.2)
+Llama 3.2
 ↓
 Generated Answer
 
@@ -41,6 +48,8 @@ Generated Answer
 * FastAPI
 * Docker
 * Sentence Transformers
+* PyMuPDF
+* LLaVA
 
 ---
 
@@ -113,6 +122,7 @@ https://ollama.com
 Pull the model:
 
 ollama pull llama3.2
+ollama pull llava
 
 Start Ollama:
 
@@ -174,8 +184,8 @@ http://localhost:8000/docs
 
 * Retrieval is primarily text-based
 * Chart and graph interpretation is limited
-* Images are not directly embedded into the vector store
-* True multimodal retrieval is not implemented
+* Image descriptions are embedded rather than raw image embeddings
+* Complex chart and graph interpretation remains limited
 
 ---
 
@@ -200,3 +210,6 @@ This project helped demonstrate:
 * Docker containerization
 * Git and GitHub workflows
 * Local LLM deployment using Ollama
+* Multimodal document processing
+* Vision-language models using LLaVA
+* Image extraction using PyMuPDF

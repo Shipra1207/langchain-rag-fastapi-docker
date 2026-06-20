@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi import UploadFile, File
 import shutil
+import os
 from services.rag_service import RAGService
 rag_service = RAGService()
 app = FastAPI()
@@ -21,7 +22,7 @@ async def upload_pdf(
 ):
 
     upload_path = f"data/{file.filename}"
-
+    os.makedirs("data",exist_ok=True)
     with open(upload_path, "wb") as buffer:
         shutil.copyfileobj(
             file.file,
